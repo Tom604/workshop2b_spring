@@ -1,14 +1,21 @@
 package nl.workshop2.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import nl.workshop2.controller.LoginController;
 
 /**
  *
  * @author Vosjes
  */
+@Component
 public class LoginMenuView extends MenuView {
     
-    /**
+	@Autowired
+	LoginController loginController;
+	
+	/**
      * Het menu waarmee de applicatie opent.
      */
     public void showStartMenu() {
@@ -47,7 +54,7 @@ public class LoginMenuView extends MenuView {
         System.out.println(MAINTOPBOTTOM);
         
         // Roep de validateLogin() methode aan (LoginController)
-        LoginController loginController = new LoginController();
+//        LoginController loginController = new LoginController();
         if (loginController.validateLogin(username, wachtwoord)) {
             HoofdMenuView hoofdMenuView = new HoofdMenuView();
             hoofdMenuView.showMenu();

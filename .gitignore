@@ -10,6 +10,7 @@
 /target/
 
 *.bak
+*.mwb
 
 
 # Van Github (autogegenereerde .gitignore voor java):

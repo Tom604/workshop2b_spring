@@ -5,15 +5,19 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import nl.workshop2.utility.BPEntityManager;
 
 public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
+//	@Autowired
 	protected EntityManager em;
 	protected Class<T> entityClass;
 	
-	public GenericDaoImpl() {
-		em = BPEntityManager.getEntityManager();
+	@Autowired
+	public GenericDaoImpl(BPEntityManager em) {
+		this.em = em.getEntityManager();
 	}
 
 	@Override
@@ -33,7 +37,7 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 		em.getTransaction().begin();
 		em.merge(instance);
 		em.getTransaction().commit();
-		BPEntityManager.close();
+		em.close();
 	}
 
 	@Override
@@ -41,6 +45,6 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 		em.getTransaction().begin();
 		em.remove(id);
 		em.getTransaction().commit();
-		BPEntityManager.close();
+		em.close();
 	}
 }

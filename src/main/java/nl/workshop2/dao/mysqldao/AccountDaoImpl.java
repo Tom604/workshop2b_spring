@@ -5,24 +5,28 @@ import nl.workshop2.utility.BPEntityManager;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Component;
+
 import nl.workshop2.dao.GenericDaoImpl;
 
+@Component
 public class AccountDaoImpl extends GenericDaoImpl<Account> {
 	
-	public AccountDaoImpl() {
+	public AccountDaoImpl(BPEntityManager em) {
+		super(em);
 		this.entityClass = Account.class;
 	}
 	
 	/*
 	 * Hier de methodes implementeren die specifiek zijn voor deze entity en die niet door
-	 * GenericDaoImpl geïmplementeerd worden.
+	 * GenericDaoImpl geï¿½mplementeerd worden.
 	 */
 	
 	public void insert(Account account) {
 		em.getTransaction().begin();
 		em.persist(account);
 		em.getTransaction().commit();
-		BPEntityManager.close();
+		em.close();
 	}
 	
 	

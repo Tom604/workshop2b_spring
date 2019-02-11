@@ -1,5 +1,8 @@
 package nl.workshop2;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import nl.workshop2.utility.BPEntityManager;
 
 //import javax.persistence.EntityManager;
@@ -7,10 +10,6 @@ import nl.workshop2.utility.BPEntityManager;
 //import javax.persistence.Persistence;
 
 //import java.sql.SQLException;
-
-//import javax.persistence.EntityManager;
-//import javax.persistence.EntityManagerFactory;
-//import javax.persistence.Persistence;
 
 //import nl.workshop2.utility.HikariCPDataSource;
 import nl.workshop2.view.LoginMenuView;
@@ -28,6 +27,7 @@ public class BPApplikaasie {
     
     public static void main(String[] args) {
         
+    	ApplicationContext context = new AnnotationConfigApplicationContext(BPApplikaasieConfig.class);
     	
     	// Draw begin String (verplaatsen naar LoginMenuView?)
         StringDrawingView stringDrawingView = new StringDrawingView();
@@ -40,7 +40,10 @@ public class BPApplikaasie {
         // Draw end String (verplaatsen naar LoginMenuView?)
         stringDrawingView.drawEndString();
     	
-        BPEntityManager.close();
+//        BPEntityManager.close();
+        
+        BPEntityManager em = context.getBean(BPEntityManager.class);
+        em.close();
         
     	// Hier EntityManager setup alleen voor aanmaken db en testen of dit goed gebeurt.
     	

@@ -1,6 +1,10 @@
 package nl.workshop2.view;
 
 import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import nl.workshop2.controller.AccountController;
 import nl.workshop2.domain.Account;
 import nl.workshop2.domain.Klant;
@@ -9,8 +13,12 @@ import nl.workshop2.domain.Klant;
  *
  * @author Vosjes
  */
+@Component
 public class AccountMenuView extends MenuView {
     
+	@Autowired
+	AccountController accountController;
+	
     @Override
     public void showMenu() {
         
@@ -83,7 +91,7 @@ public class AccountMenuView extends MenuView {
         System.out.println("1. Ja, opslaan.\n0. Nee, opnieuw invoeren.\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AccountController accountController = new AccountController();
+            case "1":   //AccountController accountController = new AccountController();
                         accountController.insertAccount(account);
                         System.out.println("Account toegevoegd.");
                         break;
@@ -99,7 +107,7 @@ public class AccountMenuView extends MenuView {
         int id = printList();
         System.out.println("\n0. Terug");
         
-        AccountController accountController = new AccountController();
+//        AccountController accountController = new AccountController();
         Account account = new Account();
         
         System.out.println("\nSelecteer account.\n");
@@ -120,7 +128,7 @@ public class AccountMenuView extends MenuView {
     
     private int printList() {
 
-        AccountController accountController = new AccountController();
+//        AccountController accountController = new AccountController();
         ArrayList<Account> accounts = accountController.selectAccounts();
         
         System.out.printf("%-3s%-16s%-16s\n", "", "Username", "Accounttype");
@@ -147,7 +155,7 @@ public class AccountMenuView extends MenuView {
                         showUpdatedAccountMenu(account);
                         break;
             case "2":   System.out.print("Bevestig uw wachtwoord: ");
-                        AccountController accountController = new AccountController();
+//                        AccountController accountController = new AccountController();
                         if (accountController.validatePassword(SCANNER.next())) {
                             account.setWachtwoord(getInputWithValidation("wachtwoord"));
                             showUpdatedAccountMenu(account);
@@ -168,7 +176,7 @@ public class AccountMenuView extends MenuView {
         System.out.println("1. Ja\n0. Nee\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AccountController accountController = new AccountController();
+            case "1":   //AccountController accountController = new AccountController();
                         accountController.updateAccount(account);
                         System.out.println("Account opgeslagen.");
                         break;
@@ -188,7 +196,7 @@ public class AccountMenuView extends MenuView {
         System.out.println("1. Ja\n0. Nee\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AccountController accountController = new AccountController();
+            case "1":   //AccountController accountController = new AccountController();
                         accountController.deleteAccount(id);
                         System.out.println("Account verwijderd.");
                         break;

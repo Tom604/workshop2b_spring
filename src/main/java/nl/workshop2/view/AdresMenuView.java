@@ -1,6 +1,10 @@
 package nl.workshop2.view;
 
 import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import nl.workshop2.controller.AdresController;
 import nl.workshop2.domain.Adres;
 import nl.workshop2.domain.Klant;
@@ -9,9 +13,13 @@ import nl.workshop2.domain.Klant;
  *
  * @author Vosjes
  */
+@Component
 public class AdresMenuView extends MenuView {
     
-    @Override
+	@Autowired
+	AdresController adresController;
+	
+	@Override
     public void showMenu() {
         
         String selection = "";
@@ -86,7 +94,7 @@ public class AdresMenuView extends MenuView {
         System.out.println("1. Ja, opslaan.\n0. Nee, opnieuw invoeren.\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AdresController adresController = new AdresController();
+            case "1":   //AdresController adresController = new AdresController();
                         adresController.insertAdres(adres);
                         System.out.println("Adres toegevoegd.");
                         break;
@@ -115,7 +123,7 @@ public class AdresMenuView extends MenuView {
         int id = AdresMenuView.this.printList();
         System.out.println("\n0. Terug");
         
-        AdresController adresController = new AdresController();
+//        AdresController adresController = new AdresController();
         Adres adres = new Adres();
         
         System.out.println("\nSelecteer adres.\n");
@@ -135,7 +143,7 @@ public class AdresMenuView extends MenuView {
     
     private int printList() {
 
-        AdresController adresController = new AdresController();
+//        AdresController adresController = new AdresController();
         ArrayList<Adres> adressen = adresController.selectAdressen();
         
         System.out.printf("%3s%-16s%-8s%-10s%-16s%-10s\n", "", "Straatnaam", "Nummer",
@@ -149,7 +157,7 @@ public class AdresMenuView extends MenuView {
     
     private void printList(Long klantId) {
         
-        AdresController adresController = new AdresController();
+//        AdresController adresController = new AdresController();
         ArrayList<Adres> adressen = adresController.selectAdressen(klantId);
         
         System.out.printf("%-16s%-8s%-10s%-16s%-10s\n", "Straatnaam", "Nummer",
@@ -207,7 +215,7 @@ public class AdresMenuView extends MenuView {
         System.out.println("1. Ja\n0. Nee\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AdresController adresController = new AdresController();
+            case "1":   //AdresController adresController = new AdresController();
                         adresController.updateAdres(adres);
                         System.out.println("Adres opgeslagen.");
                         break;
@@ -227,7 +235,7 @@ public class AdresMenuView extends MenuView {
         System.out.println("1. Ja\n0. Nee\n");
         switch (getSelection()) {
             case "0":   break;
-            case "1":   AdresController adresController = new AdresController();
+            case "1":   //AdresController adresController = new AdresController();
                         adresController.deleteAdres(id);
                         System.out.println("Adres verwijderd.");
                         break;
