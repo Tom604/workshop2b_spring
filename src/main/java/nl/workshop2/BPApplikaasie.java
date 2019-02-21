@@ -2,7 +2,6 @@ package nl.workshop2;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import nl.workshop2.utility.BPEntityManager;
 
 //import javax.persistence.EntityManager;
@@ -29,19 +28,26 @@ public class BPApplikaasie {
         
     	ApplicationContext context = new AnnotationConfigApplicationContext(BPApplikaasieConfig.class);
     	
+    	//Print alle geïnstantieerde beans
+    	/*
+    	String[] beanList = context.getBeanDefinitionNames();
+    	
+    	for (String s: beanList) {
+    		System.out.println(s);
+    	}
+    	*/
+    	
     	// Draw begin String (verplaatsen naar LoginMenuView?)
         StringDrawingView stringDrawingView = new StringDrawingView();
         stringDrawingView.drawBeginString();
         
         //Start bpapplikaasie
-        LoginMenuView loginMenuView = new LoginMenuView();
+        LoginMenuView loginMenuView = context.getBean(LoginMenuView.class);
         loginMenuView.showStartMenu();
         
         // Draw end String (verplaatsen naar LoginMenuView?)
         stringDrawingView.drawEndString();
     	
-//        BPEntityManager.close();
-        
         BPEntityManager em = context.getBean(BPEntityManager.class);
         em.close();
         

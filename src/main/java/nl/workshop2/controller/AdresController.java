@@ -2,10 +2,9 @@ package nl.workshop2.controller;
 
 import java.util.ArrayList;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//import nl.workshop2.dao.DAOFactory;
 import nl.workshop2.dao.GenericDao;
 import nl.workshop2.dao.mysqldao.AdresDaoImpl;
 import nl.workshop2.domain.Adres;
@@ -17,9 +16,9 @@ import nl.workshop2.domain.Adres;
 @Component
 public class AdresController {
     
-//	@Autowired
 	private final GenericDao<Adres> ADRESDAO; //= DAOFactory.getDAOFactory().getAdresDao();
 	
+	@Autowired
 	public AdresController(GenericDao<Adres> adresDao) {
 		this.ADRESDAO = adresDao;
 	}

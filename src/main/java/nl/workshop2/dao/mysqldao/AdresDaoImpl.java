@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nl.workshop2.dao.GenericDaoImpl;
@@ -12,7 +13,8 @@ import nl.workshop2.utility.BPEntityManager;
 
 @Component
 public class AdresDaoImpl extends GenericDaoImpl<Adres> {
-
+	
+	@Autowired
 	public AdresDaoImpl(BPEntityManager em) {
 		super(em);
 		this.entityClass = Adres.class;

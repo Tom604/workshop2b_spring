@@ -1,14 +1,24 @@
 package nl.workshop2.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author Vosjes
  */
+@Component
 public class HoofdMenuView extends MenuView {
     
     /**
      * Het hoofdmenu van de applicatie.
      */
+	
+	@Autowired
+	AdresMenuView adresMenuView;
+	@Autowired
+	AccountMenuView accountMenuView;
+	
     @Override
     public void showMenu() {
         
@@ -27,9 +37,9 @@ public class HoofdMenuView extends MenuView {
             selection = getSelection();
             switch (selection) {
                 case "0":   break;
-                case "1":   MenuView accountMenuView = new AccountMenuView();
+                case "1":   //MenuView accountMenuView = new AccountMenuView();
                             accountMenuView.showMenu(); break;
-                case "2":   MenuView adresMenuView = new AdresMenuView();
+                case "2":   //MenuView adresMenuView = new AdresMenuView();
                             adresMenuView.showMenu(); break;
                 case "3":   MenuView artikelMenuView = new ArtikelMenuView();
                             artikelMenuView.showMenu(); break;

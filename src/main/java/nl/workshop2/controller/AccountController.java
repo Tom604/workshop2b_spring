@@ -2,9 +2,9 @@ package nl.workshop2.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//import nl.workshop2.dao.DAOFactory;
 import nl.workshop2.dao.GenericDao;
 import nl.workshop2.dao.mysqldao.AccountDaoImpl;
 import nl.workshop2.domain.Account;
@@ -19,6 +19,7 @@ public class AccountController {
     
 	private final GenericDao<Account> ACCOUNTDAO; //= DAOFactory.getDAOFactory().getAccountDao();
 	
+	@Autowired
 	public AccountController(GenericDao<Account> accountDao) {
 		this.ACCOUNTDAO = accountDao;
 	}

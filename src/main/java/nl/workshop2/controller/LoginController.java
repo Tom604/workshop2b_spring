@@ -1,5 +1,6 @@
 package nl.workshop2.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nl.workshop2.dao.GenericDao;
@@ -19,6 +20,7 @@ public class LoginController {
     
     private final GenericDao<Account> ACCOUNTDAO;
     
+    @Autowired
     public LoginController(GenericDao<Account> accountDao) {
     	this.ACCOUNTDAO = accountDao;
     }

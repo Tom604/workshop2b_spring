@@ -11,7 +11,6 @@ import nl.workshop2.utility.BPEntityManager;
 
 public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
-//	@Autowired
 	protected EntityManager em;
 	protected Class<T> entityClass;
 	

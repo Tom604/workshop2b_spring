@@ -2,8 +2,8 @@ package nl.workshop2.dao.mysqldao;
 
 import nl.workshop2.dao.DAOFactory;
 import nl.workshop2.dao.GenericDao;
-import nl.workshop2.domain.Account;
-import nl.workshop2.domain.Adres;
+//import nl.workshop2.domain.Account;
+//import nl.workshop2.domain.Adres;
 import nl.workshop2.domain.Artikel;
 import nl.workshop2.domain.Bestelling;
 import nl.workshop2.domain.Bestelregel;
@@ -19,15 +19,15 @@ public class MySQLDAOFactory extends DAOFactory {
     Creatiemethodes voor alle DAO's in de factory
     */
     
-    @Override
-    public GenericDao<Account> getAccountDao() {
-        return new AccountDaoImpl();
-    }
+//    @Override
+//    public GenericDao<Account> getAccountDao() {
+//        return new AccountDaoImpl();
+//    }
     
-    @Override
-    public GenericDao<Adres> getAdresDao() {
-        return new AdresDaoImpl();
-    }
+//    @Override
+//    public GenericDao<Adres> getAdresDao() {
+//        return new AdresDaoImpl();
+//    }
     
     @Override
     public GenericDao<Artikel> getArtikelDao() {

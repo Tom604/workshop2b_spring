@@ -4,8 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-//import org.springframework.context.annotation.Bean;
-
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,7 +28,6 @@ public class BPEntityManager {
 		EM = EMFACTORY.createEntityManager();
 	}
 	
-//	@Bean
 	public EntityManager getEntityManager() {
 		return EM;
 	}

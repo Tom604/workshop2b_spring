@@ -14,6 +14,8 @@ public class LoginMenuView extends MenuView {
     
 	@Autowired
 	LoginController loginController;
+	@Autowired
+	HoofdMenuView hoofdMenuView;
 	
 	/**
      * Het menu waarmee de applicatie opent.
@@ -56,7 +58,7 @@ public class LoginMenuView extends MenuView {
         // Roep de validateLogin() methode aan (LoginController)
 //        LoginController loginController = new LoginController();
         if (loginController.validateLogin(username, wachtwoord)) {
-            HoofdMenuView hoofdMenuView = new HoofdMenuView();
+//            HoofdMenuView hoofdMenuView = new HoofdMenuView();
             hoofdMenuView.showMenu();
         }
         // Bij gefaalde validatie
